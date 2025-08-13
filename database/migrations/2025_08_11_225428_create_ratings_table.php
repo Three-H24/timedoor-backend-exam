@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('author_id')->constrained('authors');
             $table->foreignId('book_id')->constrained('books');
-            $table->foreignId('voter_id')->constrained('voters');
             $table->unsignedInteger('rating');
             $table->timestamps();
         });

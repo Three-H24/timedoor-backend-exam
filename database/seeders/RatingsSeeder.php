@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Author;
 use App\Models\Book;
-use App\Models\Voters;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
@@ -24,7 +22,6 @@ class RatingsSeeder extends Seeder
         $batchSizeRating = 5000;
         $authorIds = Author::pluck('id');
         $bookIds = Book::pluck('id');
-        $voterIds = Voters::pluck('id');
         $ratings = [];
         for ($bookId = 1; $bookId <= 100000; $bookId++) {
             $numRatings = rand(0, 10);      // random rating count per book
@@ -33,7 +30,6 @@ class RatingsSeeder extends Seeder
                 $ratings[] = [
                     'author_id'  => $authorIds->random(),
                     'book_id'    => $bookIds->random(),
-                    'voter_id'   => $voterIds->random(),    // assign random voter
                     'rating'     => rand(1, 10),
                     'created_at' => $faker->dateTimeThisYear()->format('Y-m-d H:i:s'),
                     'updated_at' => $faker->dateTimeThisYear()->format('Y-m-d H:i:s')
